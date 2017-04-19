@@ -1,0 +1,33 @@
+/**
+ * Created by Evgeny.Kutepov on 19.04.2017.
+ */
+public class Phrase {
+    public static void main(String[] args) {
+        String phrase = "abc1d2ef  ab34cde5fgh  a6b7cd8e";
+        String[] rows = phrase.split("  ");
+        int a = rows.length;
+        char [][] arr = new char [a][];
+        int[] count = new int [a];
+        for (int i = 0; i < a; i++) {
+         arr[i] = rows[i].toCharArray();
+         for (int j = 0; j < arr[i].length; j++){
+             if (arr[i][j] > 96 && arr[i][j] < 123)
+                 count[i]++;
+         }
+        }
+
+        String str = "";
+        for (int i = 0; i < a; i++) {
+            int cnt = 0;
+            for (int j = 0; j < arr[i].length; j++) {
+                if (arr[i][j] > 96 && arr[i][j] < 123) {
+                    arr[i][j] = (char) (96 + count[i] - cnt);
+                    cnt++;
+                }
+                str = str + arr[i][j];
+            }
+            str = str + "  ";
+        }
+        System.out.println(str);
+    }
+}
