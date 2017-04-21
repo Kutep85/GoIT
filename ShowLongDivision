@@ -41,7 +41,12 @@ public class ShowLongDivision {
             s1 = s1 + " ";
 
         s1 = s1 + "+";
-        for (int i = 0; i < result.size(); i++)
+        int z;
+        if (dvr.size() >= result.size())
+            z = dvr.size();
+        else
+            z = result.size();
+        for (int i = 0; i < z; i++)
             s1 = s1 + "-";
         s = s + s1 + "\n";
 
