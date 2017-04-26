@@ -22,18 +22,22 @@ public class ArrayHolder {
 
     }
 
-    public int setElement(int j) throws IOException {
-        return this.array[j] = Integer.parseInt(reader.readLine());
+    public int[] setArray(int arraySize) throws IOException {
+        for (int j = 0; j < arraySize; j++) {
+            System.out.println("Enter element " + (j + 1));
+            array[j] = Integer.parseInt(reader.readLine());
+        }
+        return array;
     }
 
-    public void ArraySort() {
+    public void arraySort() {
 
         System.out.println("Array: " + Arrays.toString(this.array));
         Arrays.sort(this.array);
         System.out.println("Sorted Array: " + Arrays.toString(this.array));
     }
 
-    public void ArrayFind(int value) {
+    public void arrayFind(int value) {
 
         int count = 0;
         for (int i = 0; i < this.array.length; i++) {
@@ -48,7 +52,7 @@ public class ArrayHolder {
             System.out.println("Value is not found.");
     }
 
-    public void PrintArray(int[] array) {
+    public void printArray(int[] array) {
 
         System.out.println(Arrays.toString(this.array));
     }
