@@ -2,14 +2,18 @@ package Shapes;
 
 public class Rectangle extends Shape {
 	
-	Rectangle (int a, int b) {
-		ar = a;
-		br = b;
+	private int length;
+	private int height;
+	
+	Rectangle (int l, int h) {
+		length = l;
+		height = h;
 		area = shapeArea();
 	}
 	
+	@Override
 	public int shapeArea() {
-		return ar * br;
+		return length * height;
 	}
 	
 	public int compareTo(Shape shape){

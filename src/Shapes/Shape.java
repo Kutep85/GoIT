@@ -2,8 +2,6 @@ package Shapes;
 
 abstract class Shape implements Comparable<Shape> {
 	
-	protected int ar;
-	protected int br;
 	protected int area; 
 	
 	abstract int shapeArea();

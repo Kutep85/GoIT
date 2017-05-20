@@ -2,13 +2,15 @@ package Shapes;
 
 public class Square extends Shape {
 	
-	Square (int a) {
-		ar = a;
+	private int side;
+	
+	Square (int s) {
+		side = s;
 		area = shapeArea();
 	}
 	
 	int shapeArea() {
-		return ar * ar;
+		return side * side;
 	}
 	
 	public int compareTo(Shape shape){

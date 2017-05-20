@@ -1,8 +1,9 @@
 package Shapes;
 
 import java.util.ArrayList;
-
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Group extends ArrayList {
 	
@@ -41,12 +42,11 @@ public class Group extends ArrayList {
 	
 	public void removeAll(String shapeType) {
 		for (int index = 0; index < this.shapes.size(); index++) {
-			if (this.shapes.get(index).getClass().equals(shapeType)){
+			if (this.shapes.get(index).getClass().toString().equals(shapeType)){
 				this.shapes.remove(index);
-				System.err.println("CIRCLE REMOVED!!!!");
+				index--;
 			}
 		}
-		System.err.println("CIRCLE REMOVED!!!!");
 	}
 	
 	public boolean isEmpty() {
@@ -71,7 +71,8 @@ public class Group extends ArrayList {
 				indexes.clear();
 				indexes.add(index);
 			}
-			if (max.compareTo(this.shapes.get(index + 1)) == 0) {
+			else
+			if (max.compareTo(this.shapes.get(index)) == 0) {
 					indexes.add(index);
 			}
 		}
@@ -87,7 +88,8 @@ public class Group extends ArrayList {
 				indexes.clear();
 				indexes.add(index);
 			}
-			if (min.compareTo(this.shapes.get(index + 1)) == 0) {
+			else
+			if (min.compareTo(this.shapes.get(index)) == 0) {
 					indexes.add(index);
 			}
 		}
@@ -109,5 +111,32 @@ public class Group extends ArrayList {
 				"\nType: " + this.shapes.get(index).getClass() + 
 				"\nArea is: " + this.shapes.get(index).area + "\n\n";
 		return string;
+	}
+	
+	public Map <String, Group> getShapesSeparatedByType () {
+		Map<String, Group>shapesSeparatedByClass = new HashMap<String, Group>();
+		Group rectangle = new Group();
+		Group square = new Group();
+		Group circle = new Group();
+		for (int index = 0; index < this.shapes.size(); index++) {
+			switch (this.shapes.get(index).getClass().toString()) {
+				case "class Shapes.Rectangle":
+					rectangle.add(this.shapes.get(index));
+					break;
+				case "class Shapes.Square":
+					square.add(this.shapes.get(index));
+					break;
+				case "class Shapes.Circle":
+					circle.add(this.shapes.get(index));
+					break;
+			}
+		}
+		if (rectangle.isEmpty() == false)
+			shapesSeparatedByClass.put("Rectangle", rectangle);
+		if (square.isEmpty() == false)
+			shapesSeparatedByClass.put("Square", square);
+		if (circle.isEmpty() == false)
+			shapesSeparatedByClass.put("Circle", circle);
+		return shapesSeparatedByClass;
 	}
 }

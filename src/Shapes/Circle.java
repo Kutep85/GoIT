@@ -2,13 +2,15 @@ package Shapes;
 
 public class Circle extends Shape {
 	
-	Circle (int a) {
-		ar = a;
+	private int radius;
+	
+	Circle (int r) {
+		radius = r;
 		area = shapeArea();
 	}
 	
 	int shapeArea() {
-		return (int) ((double)3.14 * (ar * ar));
+		return (int) (Math.PI * (radius * radius));
 	}
 	
 	public int compareTo(Shape shape){
